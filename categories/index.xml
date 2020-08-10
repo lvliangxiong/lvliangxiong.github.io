@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Lyu&#39;s Daily</title>
+    <link>https://lvliangxiong.github.io/categories/</link>
+    <description>Recent content in Categories on Lyu&#39;s Daily</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 Aug 2020 13:20:08 +0800</lastBuildDate>
+    
+	<atom:link href="https://lvliangxiong.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Data Persistence</title>
+      <link>https://lvliangxiong.github.io/categories/data-persistence/</link>
+      <pubDate>Mon, 10 Aug 2020 13:20:08 +0800</pubDate>
+      
+      <guid>https://lvliangxiong.github.io/categories/data-persistence/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Database</title>
+      <link>https://lvliangxiong.github.io/categories/database/</link>
+      <pubDate>Mon, 10 Aug 2020 13:20:08 +0800</pubDate>
+      
+      <guid>https://lvliangxiong.github.io/categories/database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Framework</title>
+      <link>https://lvliangxiong.github.io/categories/framework/</link>
+      <pubDate>Mon, 10 Aug 2020 13:20:08 +0800</pubDate>
+      
+      <guid>https://lvliangxiong.github.io/categories/framework/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://lvliangxiong.github.io/categories/java/</link>
+      <pubDate>Mon, 10 Aug 2020 13:20:08 +0800</pubDate>
+      
+      <guid>https://lvliangxiong.github.io/categories/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MyBatis</title>
+      <link>https://lvliangxiong.github.io/categories/mybatis/</link>
+      <pubDate>Mon, 10 Aug 2020 13:20:08 +0800</pubDate>
+      
+      <guid>https://lvliangxiong.github.io/categories/mybatis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SSM</title>
+      <link>https://lvliangxiong.github.io/categories/ssm/</link>
+      <pubDate>Mon, 10 Aug 2020 13:20:08 +0800</pubDate>
+      
+      <guid>https://lvliangxiong.github.io/categories/ssm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://lvliangxiong.github.io/categories/python/</link>
+      <pubDate>Fri, 03 Apr 2020 10:36:27 +0800</pubDate>
+      
+      <guid>https://lvliangxiong.github.io/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scrapy</title>
+      <link>https://lvliangxiong.github.io/categories/scrapy/</link>
+      <pubDate>Fri, 03 Apr 2020 10:36:27 +0800</pubDate>
+      
+      <guid>https://lvliangxiong.github.io/categories/scrapy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C sharp</title>
+      <link>https://lvliangxiong.github.io/categories/c-sharp/</link>
+      <pubDate>Sat, 01 Jun 2019 15:32:29 +0800</pubDate>
+      
+      <guid>https://lvliangxiong.github.io/categories/c-sharp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UWP</title>
+      <link>https://lvliangxiong.github.io/categories/uwp/</link>
+      <pubDate>Sat, 01 Jun 2019 15:32:29 +0800</pubDate>
+      
+      <guid>https://lvliangxiong.github.io/categories/uwp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Matlab</title>
+      <link>https://lvliangxiong.github.io/categories/matlab/</link>
+      <pubDate>Mon, 22 Apr 2019 18:54:10 +0800</pubDate>
+      
+      <guid>https://lvliangxiong.github.io/categories/matlab/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

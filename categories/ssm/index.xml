@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SSM on Lyu&#39;s Daily</title>
+    <link>https://lvliangxiong.github.io/categories/ssm/</link>
+    <description>Recent content in SSM on Lyu&#39;s Daily</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 Aug 2020 13:20:08 +0800</lastBuildDate>
+    
+	<atom:link href="https://lvliangxiong.github.io/categories/ssm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mybatis</title>
+      <link>https://lvliangxiong.github.io/post/java/mybatis/</link>
+      <pubDate>Mon, 10 Aug 2020 13:20:08 +0800</pubDate>
+      
+      <guid>https://lvliangxiong.github.io/post/java/mybatis/</guid>
+      <description>&lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;开源免费，原名叫iBatis&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;是一种数据访问层框架，底层是对JDBC的封装。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

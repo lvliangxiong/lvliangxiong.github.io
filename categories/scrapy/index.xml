@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scrapy on Lyu&#39;s Daily</title>
+    <link>https://lvliangxiong.github.io/categories/scrapy/</link>
+    <description>Recent content in Scrapy on Lyu&#39;s Daily</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Apr 2020 10:36:27 +0800</lastBuildDate>
+    
+	<atom:link href="https://lvliangxiong.github.io/categories/scrapy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>First Experience With Scrapy</title>
+      <link>https://lvliangxiong.github.io/post/python/first-experience-with-scrapy/</link>
+      <pubDate>Fri, 03 Apr 2020 10:36:27 +0800</pubDate>
+      
+      <guid>https://lvliangxiong.github.io/post/python/first-experience-with-scrapy/</guid>
+      <description>&lt;p&gt;Pyton is an advanced tool to build various applications, including websites, web cralwer, data analysis and extremelly popular applications in Deep Learning, AI&amp;hellip;&lt;/p&gt;
+&lt;p&gt;This blog contains my first exprience in Python and Scrapy based web cralwer, where python is a implementation language and scrapy is a fast web crawling and web scraping framework. Scrapy is highly extensible, which can incooperate with other techniques such as Selenium.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

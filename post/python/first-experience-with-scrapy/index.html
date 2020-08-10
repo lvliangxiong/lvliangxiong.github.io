@@ -1,0 +1,975 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <meta name="google-site-verification" content="PTDuKfKQvBxBppTZS6sMfvcDWXTHcL8TZPHv5qWSjos" />
+    <title>First Experience With Scrapy - Lyu&#39;s Daily</title>
+    <meta name="keywords" content="Lyu&#39;s Daily, Java, Python">
+    
+    <meta property="og:title" content="First Experience With Scrapy">
+    <meta property="og:site_name" content="Lyu&#39;s Daily">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="First Experience With Scrapy - Lyu&#39;s Daily" />
+    <meta name="description" content="Blog | Software | Java | Python"> 
+    <link rel="shortcut icon" href="https://lvliangxiong.github.io/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://lvliangxiong.github.io/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://lvliangxiong.github.io/img/apple-touch-icon.png" />
+    <link href="https://lvliangxiong.github.io/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://lvliangxiong.github.io/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://lvliangxiong.github.io/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://lvliangxiong.github.io/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://lvliangxiong.github.io/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lyu&#39;s Daily</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">a little bit change</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://lvliangxiong.github.io/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://lvliangxiong.github.io/categories/java/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />Java
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://lvliangxiong.github.io/categories/python/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />Python
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://lvliangxiong.github.io/post/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archive
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://lvliangxiong.github.io/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> Search</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://lvliangxiong.github.io/post/python/first-experience-with-scrapy/" itemprop="url">
+        First Experience With Scrapy
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">Published at:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2020-04-03">
+    2020-04-03
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">Categories:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://lvliangxiong.github.io/categories/python" itemprop="url" rel="index">
+        <span itemprop="name">Python</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://lvliangxiong.github.io/categories/scrapy" itemprop="url" rel="index">
+        <span itemprop="name">Scrapy</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">Reading:</span>
+<span class="leancloud-visitors-count">3848 words ~19min</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>Pyton is an advanced tool to build various applications, including websites, web cralwer, data analysis and extremelly popular applications in Deep Learning, AI&hellip;</p>
+<p>This blog contains my first exprience in Python and Scrapy based web cralwer, where python is a implementation language and scrapy is a fast web crawling and web scraping framework. Scrapy is highly extensible, which can incooperate with other techniques such as Selenium.</p>
+<h2 id="install-scrapy">Install <code>Scrapy</code></h2>
+<p>To install this <a href="https://anaconda.org/conda-forge/scrapy">package</a> with <code>conda</code> run one of the following:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda install -c conda-forge scrapy
+conda install -c conda-forge/label/cf201901 scrapy
+</code></pre></div><p>But I get some problems by doing so. I don&rsquo;t know whether it is because I used to install <code>Anaconda</code> and <code>scrapy</code>, and uninstalled them later before. So I tried <code>pip install scrapy</code>, and it worked. Anyway, once you have installed <code>scrapy</code>, you can continue.</p>
+<p><strong>It&rsquo;s worth noting that operations in this note are only tested on <em>Windows 10</em>. There might be a little bit different when comes with other platforms.</strong></p>
+<h2 id="architecture">Architecture</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/lvliangxiong/images-bed/images/scrapy_architecture.png" alt="scrapy_architecture"></p>
+<p>A overview of the architecture of the <code>scrapy</code> should be very useful and helpful for a novice to begin with.</p>
+<blockquote>
+<ol>
+<li>The <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-engine">Engine</a> gets the initial Requests to crawl from the <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-spiders">Spider</a>.</li>
+<li>The <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-engine">Engine</a> schedules the Requests in the <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-scheduler">Scheduler</a> and asks for the next Requests to crawl.</li>
+<li>The <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-scheduler">Scheduler</a> returns the next Requests to the <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-engine">Engine</a>.</li>
+<li>The <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-engine">Engine</a> sends the Requests to the <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-downloader">Downloader</a>, passing through the <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-downloader-middleware">Downloader Middlewares</a> (see <a href="https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#scrapy.downloadermiddlewares.DownloaderMiddleware.process_request"><code>process_request()</code></a>).</li>
+<li>Once the page finishes downloading the <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-downloader">Downloader</a> generates a Response (with that page) and sends it to the Engine, passing through the <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-downloader-middleware">Downloader Middlewares</a> (see <a href="https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#scrapy.downloadermiddlewares.DownloaderMiddleware.process_response"><code>process_response()</code></a>).</li>
+<li>The <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-engine">Engine</a> receives the Response from the <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-downloader">Downloader</a> and sends it to the <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-spiders">Spider</a> for processing, passing through the <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-spider-middleware">Spider Middleware</a> (see <a href="https://docs.scrapy.org/en/latest/topics/spider-middleware.html#scrapy.spidermiddlewares.SpiderMiddleware.process_spider_input"><code>process_spider_input()</code></a>).</li>
+<li>The <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-spiders">Spider</a> processes the Response and returns scraped items and new Requests (to follow) to the <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-engine">Engine</a>, passing through the <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-spider-middleware">Spider Middleware</a> (see <a href="https://docs.scrapy.org/en/latest/topics/spider-middleware.html#scrapy.spidermiddlewares.SpiderMiddleware.process_spider_output"><code>process_spider_output()</code></a>).</li>
+<li>The <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-engine">Engine</a> sends processed items to <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-pipelines">Item Pipelines</a>, then send processed Requests to the <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-scheduler">Scheduler</a> and asks for possible next Requests to crawl.</li>
+<li>The process repeats (from step 1) until there are no more requests from the <a href="https://docs.scrapy.org/en/latest/topics/architecture.html#component-scheduler">Scheduler</a>.</li>
+</ol>
+<p>by <code>scrapy</code> documentation.</p>
+</blockquote>
+<h2 id="a-prime-example">A Prime Example</h2>
+<p>Here I will guide you how to build a typical <code>scrapy</code> project from scratch.</p>
+<h3 id="create-a-new-project">Create a new project</h3>
+<p>Under the folder where you want to create a project, execute <code>scrapy startproject &lt;projectname&gt; [project_dir]</code>.</p>
+<p>eg. <code>scrapy startproject paper PaperDownload</code></p>
+<p>You will get a new folder named <code>PaperDownload</code> and <code>scrapy</code> will create some initial files for your project <code>paper</code>. The folder architecture is shown as follows. The comments show the function of each file.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">PaperDownload/
+   scrapy.cfg            <span style="color:#008000"># deploy configuration file</span>
+   paper/                <span style="color:#008000"># project&#39;s Python module, you&#39;ll import your code from here</span>
+       __init__.py
+       items.py          <span style="color:#008000"># project items definition file</span>
+       middlewares.py    <span style="color:#008000"># project middlewares file</span>
+       pipelines.py      <span style="color:#008000"># project pipelines file</span>
+       settings.py       <span style="color:#008000"># project settings file</span>
+       spiders/          <span style="color:#008000"># a directory where you&#39;ll later put your spiders</span>
+           __init__.py
+</code></pre></div><p>Generally speaking, you put your code in <code>spiders/</code> folder. Other module such as <code>Item</code>, <code>Pipeline</code>, <code>middleware</code> are not needed for new beginners. In this notes, I will modify some of these modules. <strong>In this process, you should keep the framework of <code>scrapy</code> in mind to fully understand what&rsquo;s going on in the project.</strong></p>
+<p>For more information of what these files are used for, please refer to this <a href="https://docs.scrapy.org/en/latest/intro/tutorial.html#creating-a-project">link</a>.</p>
+<h3 id="generate-your-spider">Generate your spider</h3>
+<p>Enter the project folder by <code>cd PaperDownload</code></p>
+<p>Generally speaking, you can create a spider by command line or manually.</p>
+<ol>
+<li>command line</li>
+</ol>
+<p><code>scrapy genspider [options] name domain.com</code></p>
+<p>eg. <code>scrapy genspider scirob robotics.sciencemag.org</code></p>
+<p>This command will create a file <code>scirob.py</code> in the <code>spiders</code> folder, with following contents:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#008000"># -*- coding: utf-8 -*-</span>
+<span style="color:#00f">import</span> scrapy
+
+
+<span style="color:#00f">class</span> <span style="color:#2b91af">ScirobSpider</span>(scrapy.Spider):
+    name = <span style="color:#a31515">&#39;scirob&#39;</span>
+    allowed_domains = [<span style="color:#a31515">&#39;robotics.sciencemag.org&#39;</span>]
+    start_urls = [<span style="color:#a31515">&#39;http://robotics.sciencemag.org/&#39;</span>]
+
+    <span style="color:#00f">def</span> parse(self, response):
+        <span style="color:#00f">pass</span>
+</code></pre></div><ol start="2">
+<li>manually</li>
+</ol>
+<p>Create a <code>.py</code> file in the <code>spiders</code> folder. And write your spider manually.</p>
+<p>Both ways are fine.</p>
+<p>Suppose you have choose the first way, and you got the <code>scirob.py</code> file and there were some default content inside.</p>
+<p>The created file contains the definition of a spider, whose name is <code>scirob</code>, defined in the attribute <code>name</code>. The name of the spider will be used in the command line to run the spider. In addition, <code>allowed_domains</code> defines the domain this spider is allowed to access. <code>start_urls</code> define the list which contains the initial URL nodes.</p>
+<p>Function <code>parse</code> define the callback function when responses of URLs in <code>start_urls</code> are available.</p>
+<p><strong>And requests yielded in the parse function will be processed later in the corresponding callback function.</strong> This is the default behavior of a scrapy spider, and it can be custom-designed.</p>
+<h3 id="analyze-spider-logic">Analyze spider logic</h3>
+<p>First we visit the website of <em>Science Robotics</em>, analyze the structure of the website.</p>
+<p>It&rsquo;s obvious that papers of <em>Science Robotics</em> are arranged in issues. Papers in one year are arranged in one volume, and every month there is an issue. You can link to all the issues in the <em>Archives</em>. So a natural solution is, first visit the archives, then extract the issue links, jump to the issue page, last obtain the pdf link in the issue page.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lvliangxiong/images-bed/images/scirob-screenshot-3.png" alt="scirob-screenshot-3"></p>
+<p>The <em>Archives</em> have a separate page for each year, from 2016 to 2019. Their addresses are similar with a common pattern <code>https://robotics.sciencemag.org/content/by/year/year_no</code>, where <code>year_no</code> can be 2016, 2017, 2018 and 2019. These URLs will be the initial network nodes the spider is going to visit.</p>
+<h3 id="implementation">Implementation</h3>
+<p>This will be a tough journey, and I will try my best to make it simple and easy to understand.</p>
+<p>According to the analysis above, we have decided the beginning URLs. To make your spider starting from these URLs, you just simply assign the <code>start_urls</code> attribute of the spider.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">start_urls = [<span style="color:#a31515">&#39;https://robotics.sciencemag.org/content/by/year/2016&#39;</span>,<span style="color:#a31515">&#39;https://robotics.sciencemag.org/content/by/year/2017&#39;</span>,<span style="color:#a31515">&#39;https://robotics.sciencemag.org/content/by/year/2018&#39;</span>,<span style="color:#a31515">&#39;https://robotics.sciencemag.org/content/by/year/2019&#39;</span>]
+</code></pre></div><p>However, in order to make the spider more intelligent and scalable, two variables are defined to automatically generate the range of years the spider is going to crawl, which indicate that you can change the range of years to be crawled simply by change these two variables. <code>Scrapy</code> provides a method named <code>start_requests</code> to custom define the initial requests.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">class</span> <span style="color:#2b91af">ScirobSpider</span>(scrapy.Spider):
+    name = <span style="color:#a31515">&#39;scirob&#39;</span>
+    base_url = <span style="color:#a31515">&#34;https://robotics.sciencemag.org/content/by/year/&#34;</span>
+    start_year = 2016
+    current_year = 2019
+    <span style="color:#00f">def</span> start_requests(self):
+        year_range = range(self.start_year, self.current_year + 1)
+        <span style="color:#00f">for</span> year <span style="color:#00f">in</span> year_range:
+            <span style="color:#008000"># generate the url for archive page of each year</span>
+            url = self.base_url + str(year)
+            self.log(url)
+            <span style="color:#008000"># request the archive page</span>
+            <span style="color:#00f">yield</span> scrapy.Request(url, callback=self.parse_issue)
+</code></pre></div><p>Now, you have told the framework the initial network nodes (URLs) we want to crawl, which correspond to the <strong>step 1</strong> in the framework architecture. The framework will handle the following step 2, 3, 4, 5, 6 for you if you haven&rsquo;t self-defined the middleware modules. In fact, in this simple demonstration, you don&rsquo;t need to change the behavior of the middleware modules, so just let the framework handle all other things for you.</p>
+<h4 id="response-analysis">Response Analysis</h4>
+<p>After the response are obtained from the internet, the framework will encapsulate the result into a response object and pass it to corresponding callback function to analyzed it. For the initial responses, the callback function are <code>parse_issue</code> function, which is defined in the declaration when the <code>Request</code> are yielded. So we will write our own process function now. Following is a simple demo of a callback function:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#008000"># extract the url for each issue and request them</span>
+<span style="color:#00f">def</span> parse_issue(self, response):
+  <span style="color:#00f">pass</span>
+</code></pre></div><p>The <code>Response</code> object are passed to the function as an argument. But it does nothing. In order to make it do something, you need use a tool called regular expression. For simplicity, <code>Reponse</code> object have provided a lot of methods for you to get its content, which make you needn&rsquo;t to learn RE at all.</p>
+<p>In the analysis of text content, regular expression comes the first head. You can use the internal regular expression engine in python to parse the text content. In the case, we are going to take the advantage of the CSS selector parse engine provided in scrapy, which is based on <code>xpath</code>. It&rsquo;s more convenient and easy to be comprehended.</p>
+<p>You simple invoke the <code>css</code> method of a <code>Response</code> object. Some examples are listed here:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">response.css(<span style="color:#a31515">&#39;title&#39;</span>) <span style="color:#008000"># return all title tags in the source code</span>
+response.css(<span style="color:#a31515">&#39;title::text&#39;</span>).getall() <span style="color:#008000"># return the inner text in the title tags in the form of a list</span>
+response.css(<span style="color:#a31515">&#39;title::text&#39;</span>).get() <span style="color:#008000"># return the inner text in the first title tag</span>
+response.css(<span style="color:#a31515">&#39;title::text&#39;</span>).re(<span style="color:#a31515">r</span><span style="color:#a31515">&#39;Quotes.*&#39;</span>) <span style="color:#008000"># parse the result with regular expression</span>
+response.css(<span style="color:#a31515">&#39;li.next a::attr(href)&#39;</span>).get() <span style="color:#008000"># get href attribute</span>
+response.css(<span style="color:#a31515">&#39;li.next a&#39;</span>).attrib[<span style="color:#a31515">&#39;href&#39;</span>]
+</code></pre></div><p>Ok, now we are going to parse the links which represents every issue of <code>Sci Rob</code>.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lvliangxiong/images-bed/images/scirob-screenshot-1.png" alt="scirob-screenshot-1"></p>
+<p>Open the development console by press <code>F12</code>, locating the element which contain the links you need using inspector. The element will be highlighted, and that&rsquo;s exactly what you need. Like the source code above, it is <code>&lt;a class=&quot;hightlight-image&quot; href=&quot;/content/4/30&quot;&gt;...</code>, note that it&rsquo;s not the <code>&lt;img&gt;</code> tag. So we write a CSS selector to obtain the link.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">highlight_image_links = response.css(<span style="color:#a31515">&#34;a.highlight-image-linked&#34;</span>)
+</code></pre></div><p>It returns a list which contain all the <code>&lt;a&gt;</code> tag whose class is <code>highlight-image-linked</code> in this page. To tell the architecture where to crawl in the next step, you even need not to parse the URL yourself. You can directly pass the <code>&lt;a&gt;</code> element to the <code>Response</code> constructor.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">for</span> tag_a <span style="color:#00f">in</span> highlight_image_links:
+  <span style="color:#00f">yield</span> response.follow(tag_a, callback=self.parse_pdf)
+</code></pre></div><p>So here is your <code>pass_issue</code> function.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#008000"># extract the url for each issue and request them</span>
+<span style="color:#00f">def</span> parse_issue(self, response):
+  highlight_image_links = response.css(<span style="color:#a31515">&#34;a.highlight-image-linked&#34;</span>)
+  <span style="color:#00f">for</span> tag_a <span style="color:#00f">in</span> highlight_image_links:
+    <span style="color:#00f">yield</span> response.follow(tag_a, callback=self.parse_pdf)
+</code></pre></div><p>Now we have process the response page from initial network page and yield new requests to the real page where pdfs are located. If you are smart enough, you must have noticed that we have defined callback function in their requests, i. e. <code>parse_pdf</code>.</p>
+<p>Same routine, we parse the pdf links and yield them.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/lvliangxiong/images-bed/images/scirob-screenshot-2.png" alt="scirob-screenshot-2"></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">def</span> parse_pdf(self, response):
+  tag_ul = response.css(<span style="color:#a31515">&#34;ul.issue-toc.item-list&#34;</span>)
+  tags_a = tag_ul.css(
+    <span style="color:#a31515">&#34;a.highwire-variant-link.variant-full-textpdf.link-icon&#34;</span>)
+  pdf_urls = []
+  <span style="color:#00f">for</span> tag_a <span style="color:#00f">in</span> tags_a:
+    pdf_url = response.urljoin(tag_a.css(<span style="color:#a31515">&#34;a::attr(href)&#34;</span>).get())
+    <span style="color:#008000"># in fact, there is a url redirection here, autohandled by scrapy</span>
+    pdf_urls.append(pdf_url)
+</code></pre></div><h4 id="items">Items</h4>
+<p>In this callback function, we can obtain all the pdf links in one issue. Now we have to consider how to download them. Generally speaking, you can do them all by manually, it is too stupid. The reason why we use the framework, because they can save time for us. In fact, scrapy also provide a file downloader for us. In this tutorial, we are going to use the internal downloader to simplify the process.</p>
+<p>In order to use the downloader in scrapy, first you should add an item definition in the the <code>items.py</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">from</span> scrapy <span style="color:#00f">import</span> Item
+<span style="color:#00f">from</span> scrapy.item <span style="color:#00f">import</span> Field
+
+<span style="color:#00f">class</span> <span style="color:#2b91af">SciRobIssueItem</span>(Item):
+    volume = Field()
+    issue = Field()
+    <span style="color:#008000"># contain the urls of pdf</span>
+    file_urls = Field()
+    <span style="color:#008000"># will be populated automatically after downloading</span>
+    files = Field()
+</code></pre></div><p>So what&rsquo;s the usage of this <code>Item</code>: contain all the information you should provided scrapy to let it know where to download and additional information. Here we add two additional information for later saving of the pdf files. Then what you should do is yield these items in your parse function, i. e. <code>parse_pdf</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">from</span> paper.items <span style="color:#00f">import</span> SciRobIssueItem
+
+<span style="color:#008000"># extract all urls for pdfs in the issue and store them in the item</span>
+<span style="color:#00f">def</span> parse_pdf(self, response):
+  <span style="color:#008000"># extract the volume and issue</span>
+  current_url = response.url
+  volume = int(current_url.split(<span style="color:#a31515">&#34;/&#34;</span>)[-2])
+  issue = int(current_url.split(<span style="color:#a31515">&#34;/&#34;</span>)[-1])
+  <span style="color:#008000"># extract urls of all pdf and store them in the item</span>
+  issue = SciRobIssueItem(volume=volume, issue=issue)
+  tag_ul = response.css(<span style="color:#a31515">&#34;ul.issue-toc.item-list&#34;</span>)
+  tags_a = tag_ul.css(
+    <span style="color:#a31515">&#34;a.highwire-variant-link.variant-full-textpdf.link-icon&#34;</span>)
+  pdf_urls = []
+  <span style="color:#00f">for</span> tag_a <span style="color:#00f">in</span> tags_a:
+    pdf_url = response.urljoin(tag_a.css(<span style="color:#a31515">&#34;a::attr(href)&#34;</span>).get())
+    <span style="color:#008000"># in fact, there is a url redirection here, autohandled by scrapy</span>
+    pdf_urls.append(pdf_url)
+    issue[<span style="color:#a31515">&#34;file_urls&#34;</span>] = pdf_urls
+    <span style="color:#008000"># return the extracted data for pipeline for postprocessing</span>
+    <span style="color:#00f">yield</span> issue
+</code></pre></div><p>This should be very easy to understand. I extract the volume number, issue number and pdf links from the issue page and store them into an <code>SciRobIssueItem</code> object and yield it. The meaning of yielding an <code>Item</code> is the same as yielding a <code>Request</code>, the difference lies in the process of the scrapy engine. According to the architecture of scrapy, the engine will pass the item to the <code>Item Pipelines</code>. That&rsquo;s where we will going to post-process the yielded <code>Item</code>.</p>
+<h4 id="filespipeline">FilesPipeline</h4>
+<p>Like <code>Request</code> object who must have a callback function when yielded, the <code>Item</code> object also need a <code>Pipeline</code> object to do the control the processing of downloading the files. You can set the <code>ITEM_PIPELINES</code> in the <code>settings.py</code> but it will take effect in the project scope. We recommend setting it in the spider file, which just take effect in the spider scope.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">custom_settings = {
+  <span style="color:#a31515">&#34;DOWNLOAD_TIMEOUT&#34;</span>: 300,
+  <span style="color:#008000"># set the SciRobPdfsPipeline to the first handling pipeline when items are passed to the pipelines</span>
+  <span style="color:#a31515">&#34;ITEM_PIPELINES&#34;</span>: {
+    <span style="color:#a31515">&#39;paper.pipelines.SciRobPdfsPipeline&#39;</span>: 1
+  },
+  <span style="color:#a31515">&#39;MEDIA_ALLOW_REDIRECTS&#39;</span>: True,
+  <span style="color:#a31515">&#39;FILES_STORE&#39;</span>: <span style="color:#a31515">&#34;Downloads&#34;</span>,  <span style="color:#008000"># define where to store the files</span>
+  <span style="color:#a31515">&#39;FILES_EXPIRES&#39;</span>: 120,
+}
+</code></pre></div><p>The setting are self-clear enough. And I just explain one of them: <code>MEDIA_ALLOW_REDIRECTS</code>. In fact the pdf links parsed in the issue are not the real link of the pdf resource, it&rsquo;s a convention to protect the online resources. By setting this configuration to true, scrapy will try to auto redirect to the real address where the resources are and download them.</p>
+<p>Now, we get to the <code>pipelines.py</code> to write our pipeline, very similar to callback function, right?</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">import</span> scrapy
+<span style="color:#00f">from</span> scrapy.pipelines.files <span style="color:#00f">import</span> FilesPipeline
+
+<span style="color:#00f">class</span> <span style="color:#2b91af">SciRobPdfsPipeline</span>(FilesPipeline):
+    <span style="color:#00f">def</span> get_media_requests(self, item, info):
+        <span style="color:#008000"># get the index of pdf according to the position of url in the file_urls</span>
+        volume = item.get(<span style="color:#a31515">&#34;volume&#34;</span>, <span style="color:#a31515">&#34;NA&#34;</span>)
+        issue = item.get(<span style="color:#a31515">&#34;issue&#34;</span>, <span style="color:#a31515">&#34;NA&#34;</span>)
+        <span style="color:#00f">return</span> [
+            scrapy.Request(x,
+                           meta={
+                               <span style="color:#a31515">&#34;volume&#34;</span>: volume,
+                               <span style="color:#a31515">&#34;issue&#34;</span>: issue,
+                               <span style="color:#a31515">&#34;index&#34;</span>: index + 1
+                           })
+            <span style="color:#00f">for</span> index, x <span style="color:#00f">in</span> enumerate(item.get(self.files_urls_field, []))
+        ]
+</code></pre></div><p>In <code>get_media_request</code> method you can made some modifications before the requests to download the files are submitted to the scrapy framework.</p>
+<p>In order to better save the pdf files, I add some information in the <code>Request</code> object, including the volume number, issue number and the index of this pdf in one issue. Here we use a grammer like <code>[x*2 for x in rang(10)]</code> in python, making the code more brief. You also can write a <code>for</code> loop.</p>
+<p>After rewrite the <code>get_media_request</code> method, the <code>Request</code> will be submitted to scrapy framework to download the file resource. A following question is how to store them. In fact we have specify the store folder in the settings in spider file. But how about the filename?</p>
+<p>A better practice will be store the pdfs of one issue in one folder named by the issue number and every pdf are arranged in the order appeared on the website. That&rsquo;s where the additional information we add to the <code>Request</code> object make significance.</p>
+<p><code>scrapy</code> also provides a <code>file_path</code> in the <code>FilesPipeline</code> to allow users to self-define the filename. So what we should do is fetch the information we add into the <code>Request</code> object and concatenate the folder and filename we want.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">import</span> os
+<span style="color:#00f">from</span> urllib.parse <span style="color:#00f">import</span> urlparse
+
+<span style="color:#00f">def</span> file_path(self, request, response=None, info=None):
+  volume = request.meta.get(<span style="color:#a31515">&#34;volume&#34;</span>)
+  issue = request.meta.get(<span style="color:#a31515">&#34;issue&#34;</span>)
+  index = request.meta.get(<span style="color:#a31515">&#34;index&#34;</span>)
+  <span style="color:#008000"># By default the file_path() method returns full/&lt;request URL hash&gt;.&lt;extension&gt;.</span>
+  <span style="color:#008000"># change the default path</span>
+  filename = (<span style="color:#a31515">&#34;[&#34;</span> + str(index) + <span style="color:#a31515">&#34;] &#34;</span> +
+              os.path.basename(urlparse(request.url).path))
+  <span style="color:#00f">return</span> <span style="color:#a31515">&#34;Volume </span><span style="color:#a31515">%s</span><span style="color:#a31515"> Issue </span><span style="color:#a31515">%s</span><span style="color:#a31515">/</span><span style="color:#a31515">%s</span><span style="color:#a31515">&#34;</span> % (volume, issue, filename)
+</code></pre></div><p>By now, we have finished the coding of this spider, it should work.</p>
+<h4 id="some-trivial-settings">Some trivial settings</h4>
+<p>It&rsquo;s worthy to mention, it&rsquo;s a common practice to make some modifications in the <code>settings.py</code>. That is:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">USER_AGENT = <span style="color:#a31515">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0&#39;</span>
+ROBOTSTXT_OBEY = False
+</code></pre></div><p>In the end, your source code file should look like this:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#008000"># -*- coding: utf-8 -*-</span>
+
+<span style="color:#008000"># Define your item pipelines here</span>
+<span style="color:#008000">#</span>
+<span style="color:#008000"># Don&#39;t forget to add your pipeline to the ITEM_PIPELINES setting</span>
+<span style="color:#008000"># See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html</span>
+
+<span style="color:#008000"># scirob.py</span>
+
+<span style="color:#00f">import</span> scrapy
+<span style="color:#00f">from</span> scrapy.pipelines.files <span style="color:#00f">import</span> FilesPipeline
+<span style="color:#00f">import</span> os
+<span style="color:#00f">from</span> urllib.parse <span style="color:#00f">import</span> urlparse
+
+
+<span style="color:#00f">class</span> <span style="color:#2b91af">PaperPipeline</span>(object):
+    <span style="color:#00f">def</span> process_item(self, item, spider):
+        <span style="color:#00f">return</span> item
+
+
+<span style="color:#00f">class</span> <span style="color:#2b91af">SciRobPdfsPipeline</span>(FilesPipeline):
+    <span style="color:#00f">def</span> file_path(self, request, response=None, info=None):
+        volume = request.meta.get(<span style="color:#a31515">&#34;volume&#34;</span>)
+        issue = request.meta.get(<span style="color:#a31515">&#34;issue&#34;</span>)
+        index = request.meta.get(<span style="color:#a31515">&#34;index&#34;</span>)
+        <span style="color:#008000"># By default the file_path() method returns full/&lt;request URL hash&gt;.&lt;extension&gt;.</span>
+        <span style="color:#008000"># change the default path</span>
+        filename = (<span style="color:#a31515">&#34;[&#34;</span> + str(index) + <span style="color:#a31515">&#34;] &#34;</span> +
+                    os.path.basename(urlparse(request.url).path))
+        <span style="color:#00f">return</span> <span style="color:#a31515">&#34;Volume </span><span style="color:#a31515">%s</span><span style="color:#a31515"> Issue </span><span style="color:#a31515">%s</span><span style="color:#a31515">/</span><span style="color:#a31515">%s</span><span style="color:#a31515">&#34;</span> % (volume, issue, filename)
+
+    <span style="color:#00f">def</span> get_media_requests(self, item, info):
+        <span style="color:#008000"># get the index of pdf according to the position of url in the file_urls</span>
+        volume = item.get(<span style="color:#a31515">&#34;volume&#34;</span>, <span style="color:#a31515">&#34;NA&#34;</span>)
+        issue = item.get(<span style="color:#a31515">&#34;issue&#34;</span>, <span style="color:#a31515">&#34;NA&#34;</span>)
+        <span style="color:#00f">return</span> [
+            scrapy.Request(x,
+                           meta={
+                               <span style="color:#a31515">&#34;volume&#34;</span>: volume,
+                               <span style="color:#a31515">&#34;issue&#34;</span>: issue,
+                               <span style="color:#a31515">&#34;index&#34;</span>: index + 1
+                           })
+            <span style="color:#00f">for</span> index, x <span style="color:#00f">in</span> enumerate(item.get(self.files_urls_field, []))
+        ]
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#008000"># -*- coding: utf-8 -*-</span>
+
+<span style="color:#008000"># Define here the models for your scraped items</span>
+<span style="color:#008000">#</span>
+<span style="color:#008000"># See documentation in:</span>
+<span style="color:#008000"># https://docs.scrapy.org/en/latest/topics/items.html</span>
+
+<span style="color:#008000"># items.py</span>
+
+<span style="color:#00f">import</span> scrapy
+<span style="color:#00f">from</span> scrapy <span style="color:#00f">import</span> Item
+<span style="color:#00f">from</span> scrapy.item <span style="color:#00f">import</span> Field
+
+
+<span style="color:#00f">class</span> <span style="color:#2b91af">PaperItem</span>(scrapy.Item):
+    <span style="color:#008000"># define the fields for your item here like:</span>
+    <span style="color:#008000"># name = scrapy.Field()</span>
+    <span style="color:#00f">pass</span>
+
+
+<span style="color:#00f">class</span> <span style="color:#2b91af">SciRobIssueItem</span>(Item):
+    volume = Field()
+    issue = Field()
+    <span style="color:#008000"># contain the urls of pdf</span>
+    file_urls = Field()
+    <span style="color:#008000"># will be populated automatically after downloading</span>
+    files = Field()
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#008000"># -*- coding: utf-8 -*-</span>
+
+<span style="color:#008000"># Define your item pipelines here</span>
+<span style="color:#008000">#</span>
+<span style="color:#008000"># Don&#39;t forget to add your pipeline to the ITEM_PIPELINES setting</span>
+<span style="color:#008000"># See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html</span>
+
+<span style="color:#008000"># pipelines.py</span>
+
+<span style="color:#00f">import</span> scrapy
+<span style="color:#00f">from</span> scrapy.pipelines.files <span style="color:#00f">import</span> FilesPipeline
+<span style="color:#00f">import</span> os
+<span style="color:#00f">from</span> urllib.parse <span style="color:#00f">import</span> urlparse
+
+
+<span style="color:#00f">class</span> <span style="color:#2b91af">PaperPipeline</span>(object):
+    <span style="color:#00f">def</span> process_item(self, item, spider):
+        <span style="color:#00f">return</span> item
+
+
+<span style="color:#00f">class</span> <span style="color:#2b91af">SciRobPdfsPipeline</span>(FilesPipeline):
+    <span style="color:#00f">def</span> file_path(self, request, response=None, info=None):
+        volume = request.meta.get(<span style="color:#a31515">&#34;volume&#34;</span>)
+        issue = request.meta.get(<span style="color:#a31515">&#34;issue&#34;</span>)
+        index = request.meta.get(<span style="color:#a31515">&#34;index&#34;</span>)
+        <span style="color:#008000"># By default the file_path() method returns full/&lt;request URL hash&gt;.&lt;extension&gt;.</span>
+        <span style="color:#008000"># change the default path</span>
+        filename = (<span style="color:#a31515">&#34;[&#34;</span> + str(index) + <span style="color:#a31515">&#34;] &#34;</span> +
+                    os.path.basename(urlparse(request.url).path))
+        <span style="color:#00f">return</span> <span style="color:#a31515">&#34;Volume </span><span style="color:#a31515">%s</span><span style="color:#a31515"> Issue </span><span style="color:#a31515">%s</span><span style="color:#a31515">/</span><span style="color:#a31515">%s</span><span style="color:#a31515">&#34;</span> % (volume, issue, filename)
+
+    <span style="color:#00f">def</span> get_media_requests(self, item, info):
+        <span style="color:#008000"># get the index of pdf according to the position of url in the file_urls</span>
+        volume = item.get(<span style="color:#a31515">&#34;volume&#34;</span>, <span style="color:#a31515">&#34;NA&#34;</span>)
+        issue = item.get(<span style="color:#a31515">&#34;issue&#34;</span>, <span style="color:#a31515">&#34;NA&#34;</span>)
+        <span style="color:#00f">return</span> [
+            scrapy.Request(x,
+                           meta={
+                               <span style="color:#a31515">&#34;volume&#34;</span>: volume,
+                               <span style="color:#a31515">&#34;issue&#34;</span>: issue,
+                               <span style="color:#a31515">&#34;index&#34;</span>: index + 1
+                           })
+            <span style="color:#00f">for</span> index, x <span style="color:#00f">in</span> enumerate(item.get(self.files_urls_field, []))
+        ]
+</code></pre></div><h4 id="run-your-spider">Run your spider</h4>
+<p>Now run your spider by command: <code>scrapy crawl scirob</code> in the project folder. Something like this will shown in your console:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">2020-03-07 13:49:28 [scrapy.utils.log] INFO: Scrapy 1.8.0 started (bot: paper)
+2020-03-07 13:49:28 [scrapy.utils.log] INFO: Versions: lxml 4.4.1.0, libxml2 2.9.9, cssselect 1.1.0, parsel 1.5.2, w3lib 1.21.0, Twisted 19.10.0, Python 3.7.4 (default, Aug  9 2019, 18:34:13) [MSC v.1915 64 bit (AMD64)], pyOpenSSL 19.0.0 (OpenSSL 1.1.1d  10 Sep 2019), cryptography 2.7, Platform Windows-10-10.0.18362-SP0
+2020-03-07 13:49:28 [scrapy.crawler] INFO: Overridden settings: {&#39;BOT_NAME&#39;: &#39;paper&#39;, &#39;DOWNLOAD_TIMEOUT&#39;: 300, &#39;NEWSPIDER_MODULE&#39;: &#39;paper.spiders&#39;, &#39;SPIDER_MODULES&#39;: [&#39;paper.spiders&#39;], &#39;USER_AGENT&#39;: &#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0&#39;}
+2020-03-07 13:49:28 [scrapy.extensions.telnet] INFO: Telnet Password: 33b192ac6633f12d
+2020-03-07 13:49:28 [scrapy.middleware] INFO: Enabled extensions:
+[&#39;scrapy.extensions.corestats.CoreStats&#39;,
+ &#39;scrapy.extensions.telnet.TelnetConsole&#39;,
+ &#39;scrapy.extensions.logstats.LogStats&#39;]
+2020-03-07 13:49:28 [scrapy.middleware] INFO: Enabled downloader middlewares:
+[&#39;scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware&#39;,
+ &#39;scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware&#39;,
+ &#39;scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware&#39;,
+ &#39;scrapy.downloadermiddlewares.useragent.UserAgentMiddleware&#39;,
+ &#39;scrapy.downloadermiddlewares.retry.RetryMiddleware&#39;,
+ &#39;scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware&#39;,
+ &#39;scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware&#39;,
+ &#39;scrapy.downloadermiddlewares.redirect.RedirectMiddleware&#39;,
+ &#39;scrapy.downloadermiddlewares.cookies.CookiesMiddleware&#39;,
+ &#39;scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware&#39;,
+ &#39;scrapy.downloadermiddlewares.stats.DownloaderStats&#39;]
+2020-03-07 13:49:28 [scrapy.middleware] INFO: Enabled spider middlewares:
+[&#39;scrapy.spidermiddlewares.httperror.HttpErrorMiddleware&#39;,
+ &#39;scrapy.spidermiddlewares.offsite.OffsiteMiddleware&#39;,
+ &#39;scrapy.spidermiddlewares.referer.RefererMiddleware&#39;,
+ &#39;scrapy.spidermiddlewares.urllength.UrlLengthMiddleware&#39;,
+ &#39;scrapy.spidermiddlewares.depth.DepthMiddleware&#39;]
+2020-03-07 13:49:28 [scrapy.middleware] INFO: Enabled item pipelines:
+[&#39;paper.pipelines.SciRobPdfsPipeline&#39;]
+2020-03-07 13:49:28 [scrapy.core.engine] INFO: Spider opened
+2020-03-07 13:49:28 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2020-03-07 13:49:28 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6023
+2020-03-07 13:49:28 [scirob] DEBUG: https://robotics.sciencemag.org/content/by/year/2016
+2020-03-07 13:49:31 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://robotics.sciencemag.org/content/by/year/2016&gt; (referer: None)
+2020-03-07 13:49:32 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://robotics.sciencemag.org/content/1/1&gt; (referer: https://robotics.sciencemag.org/content/by/year/2016)
+2020-03-07 13:49:32 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (301) to &lt;GET https://robotics.sciencemag.org/content/robotics/1/1/eaal2099.full.pdf&gt; from &lt;GET https://robotics.sciencemag.org/content/1/1/eaal2099.full.pdf&gt;
+2020-03-07 13:49:33 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (301) to &lt;GET https://robotics.sciencemag.org/content/robotics/1/1/eaag2048.full.pdf&gt; from &lt;GET https://robotics.sciencemag.org/content/1/1/eaag2048.full.pdf&gt;
+2020-03-07 13:49:33 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (301) to &lt;GET https://robotics.sciencemag.org/content/robotics/1/1/eaah3690.full.pdf&gt; from &lt;GET https://robotics.sciencemag.org/content/1/1/eaah3690.full.pdf&gt;
+2020-03-07 13:49:33 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (301) to &lt;GET https://robotics.sciencemag.org/content/robotics/1/1/eaag3296.full.pdf&gt; from &lt;GET https://robotics.sciencemag.org/content/1/1/eaag3296.full.pdf&gt;
+2020-03-07 13:49:33 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (301) to &lt;GET https://robotics.sciencemag.org/content/robotics/1/1/eaai7529.full.pdf&gt; from &lt;GET https://robotics.sciencemag.org/content/1/1/eaai7529.full.pdf&gt;
+2020-03-07 13:49:33 [scrapy.downloadermiddlewares.redirect] DEBUG: Redirecting (301) to &lt;GET https://robotics.sciencemag.org/content/robotics/1/1/eaah5682.full.pdf&gt; from &lt;GET https://robotics.sciencemag.org/content/1/1/eaah5682.full.pdf&gt;
+2020-03-07 13:49:54 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://robotics.sciencemag.org/content/robotics/1/1/eaag3296.full.pdf&gt; (referer: None)
+2020-03-07 13:49:54 [scrapy.pipelines.files] DEBUG: File (downloaded): Downloaded file from &lt;GET https://robotics.sciencemag.org/content/1/1/eaag3296.full.pdf&gt; referred in &lt;None&gt;
+2020-03-07 13:50:25 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://robotics.sciencemag.org/content/robotics/1/1/eaah5682.full.pdf&gt; (referer: None)
+2020-03-07 13:50:25 [scrapy.pipelines.files] DEBUG: File (downloaded): Downloaded file from &lt;GET https://robotics.sciencemag.org/content/1/1/eaah5682.full.pdf&gt; referred in &lt;None&gt;
+2020-03-07 13:50:28 [scrapy.extensions.logstats] INFO: Crawled 4 pages (at 4 pages/min), scraped 0 items (at 0 items/min)
+2020-03-07 13:50:35 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://robotics.sciencemag.org/content/robotics/1/1/eaag2048.full.pdf&gt; (referer: None)
+2020-03-07 13:50:35 [scrapy.pipelines.files] DEBUG: File (downloaded): Downloaded file from &lt;GET https://robotics.sciencemag.org/content/1/1/eaag2048.full.pdf&gt; referred in &lt;None&gt;
+2020-03-07 13:51:21 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://robotics.sciencemag.org/content/robotics/1/1/eaal2099.full.pdf&gt; (referer: None)
+2020-03-07 13:51:21 [scrapy.pipelines.files] DEBUG: File (downloaded): Downloaded file from &lt;GET https://robotics.sciencemag.org/content/1/1/eaal2099.full.pdf&gt; referred in &lt;None&gt;
+2020-03-07 13:51:21 [scrapy.core.scraper] DEBUG: Scraped from &lt;200 https://robotics.sciencemag.org/content/1/1&gt;
+{&#39;file_urls&#39;: [&#39;https://robotics.sciencemag.org/content/1/1/eaal2099.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaah3690.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaai7529.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaag2048.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaag3296.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaah5682.full.pdf&#39;],
+ &#39;files&#39;: [{&#39;checksum&#39;: &#39;c3135a2878689645532c2915905b1047&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[1] eaal2099.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaal2099.full.pdf&#39;}],
+ &#39;issue&#39;: 1,
+ &#39;volume&#39;: 1}
+2020-03-07 13:51:28 [scrapy.extensions.logstats] INFO: Crawled 6 pages (at 2 pages/min), scraped 1 items (at 1 items/min)
+2020-03-07 13:52:28 [scrapy.extensions.logstats] INFO: Crawled 6 pages (at 0 pages/min), scraped 1 items (at 0 items/min)
+2020-03-07 13:53:12 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://robotics.sciencemag.org/content/robotics/1/1/eaai7529.full.pdf&gt; (referer: None)
+2020-03-07 13:53:12 [scrapy.pipelines.files] DEBUG: File (downloaded): Downloaded file from &lt;GET https://robotics.sciencemag.org/content/1/1/eaai7529.full.pdf&gt; referred in &lt;None&gt;
+2020-03-07 13:53:18 [scrapy.core.engine] DEBUG: Crawled (200) &lt;GET https://robotics.sciencemag.org/content/robotics/1/1/eaah3690.full.pdf&gt; (referer: None)
+2020-03-07 13:53:18 [scrapy.pipelines.files] DEBUG: File (downloaded): Downloaded file from &lt;GET https://robotics.sciencemag.org/content/1/1/eaah3690.full.pdf&gt; referred in &lt;None&gt;
+2020-03-07 13:53:18 [scrapy.core.scraper] DEBUG: Scraped from &lt;200 https://robotics.sciencemag.org/content/1/1&gt;
+{&#39;file_urls&#39;: [&#39;https://robotics.sciencemag.org/content/1/1/eaal2099.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaah3690.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaai7529.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaag2048.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaag3296.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaah5682.full.pdf&#39;],
+ &#39;files&#39;: [{&#39;checksum&#39;: &#39;c3135a2878689645532c2915905b1047&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[1] eaal2099.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaal2099.full.pdf&#39;},
+           {&#39;checksum&#39;: &#39;cb0eb81f03effe1a5b396fd624e198b4&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[2] eaah3690.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaah3690.full.pdf&#39;}],
+ &#39;issue&#39;: 1,
+ &#39;volume&#39;: 1}
+2020-03-07 13:53:18 [scrapy.core.scraper] DEBUG: Scraped from &lt;200 https://robotics.sciencemag.org/content/1/1&gt;
+{&#39;file_urls&#39;: [&#39;https://robotics.sciencemag.org/content/1/1/eaal2099.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaah3690.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaai7529.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaag2048.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaag3296.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaah5682.full.pdf&#39;],
+ &#39;files&#39;: [{&#39;checksum&#39;: &#39;c3135a2878689645532c2915905b1047&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[1] eaal2099.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaal2099.full.pdf&#39;},
+           {&#39;checksum&#39;: &#39;cb0eb81f03effe1a5b396fd624e198b4&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[2] eaah3690.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaah3690.full.pdf&#39;},
+           {&#39;checksum&#39;: &#39;5ed5d4237a94f0e32986608e6472537b&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[3] eaai7529.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaai7529.full.pdf&#39;},
+           {&#39;checksum&#39;: &#39;ff300061538b89db02db4f0a1296de83&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[4] eaag2048.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaag2048.full.pdf&#39;},
+           {&#39;checksum&#39;: &#39;8206a6e0133f924244a164b0fc8825c8&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[5] eaag3296.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaag3296.full.pdf&#39;}],
+ &#39;issue&#39;: 1,
+ &#39;volume&#39;: 1}
+2020-03-07 13:53:18 [scrapy.core.scraper] DEBUG: Scraped from &lt;200 https://robotics.sciencemag.org/content/1/1&gt;
+{&#39;file_urls&#39;: [&#39;https://robotics.sciencemag.org/content/1/1/eaal2099.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaah3690.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaai7529.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaag2048.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaag3296.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaah5682.full.pdf&#39;],
+ &#39;files&#39;: [{&#39;checksum&#39;: &#39;c3135a2878689645532c2915905b1047&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[1] eaal2099.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaal2099.full.pdf&#39;},
+           {&#39;checksum&#39;: &#39;cb0eb81f03effe1a5b396fd624e198b4&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[2] eaah3690.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaah3690.full.pdf&#39;},
+           {&#39;checksum&#39;: &#39;5ed5d4237a94f0e32986608e6472537b&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[3] eaai7529.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaai7529.full.pdf&#39;},
+           {&#39;checksum&#39;: &#39;ff300061538b89db02db4f0a1296de83&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[4] eaag2048.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaag2048.full.pdf&#39;},
+           {&#39;checksum&#39;: &#39;8206a6e0133f924244a164b0fc8825c8&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[5] eaag3296.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaag3296.full.pdf&#39;},
+           {&#39;checksum&#39;: &#39;bc00d1c4749e0b31623ad353cf214fb6&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[6] eaah5682.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaah5682.full.pdf&#39;}],
+ &#39;issue&#39;: 1,
+ &#39;volume&#39;: 1}
+2020-03-07 13:53:18 [scrapy.core.scraper] DEBUG: Scraped from &lt;200 https://robotics.sciencemag.org/content/1/1&gt;
+{&#39;file_urls&#39;: [&#39;https://robotics.sciencemag.org/content/1/1/eaal2099.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaah3690.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaai7529.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaag2048.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaag3296.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaah5682.full.pdf&#39;],
+ &#39;files&#39;: [{&#39;checksum&#39;: &#39;c3135a2878689645532c2915905b1047&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[1] eaal2099.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaal2099.full.pdf&#39;},
+           {&#39;checksum&#39;: &#39;cb0eb81f03effe1a5b396fd624e198b4&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[2] eaah3690.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaah3690.full.pdf&#39;},
+           {&#39;checksum&#39;: &#39;5ed5d4237a94f0e32986608e6472537b&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[3] eaai7529.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaai7529.full.pdf&#39;}],
+ &#39;issue&#39;: 1,
+ &#39;volume&#39;: 1}
+2020-03-07 13:53:18 [scrapy.core.scraper] DEBUG: Scraped from &lt;200 https://robotics.sciencemag.org/content/1/1&gt;
+{&#39;file_urls&#39;: [&#39;https://robotics.sciencemag.org/content/1/1/eaal2099.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaah3690.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaai7529.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaag2048.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaag3296.full.pdf&#39;,
+               &#39;https://robotics.sciencemag.org/content/1/1/eaah5682.full.pdf&#39;],
+ &#39;files&#39;: [{&#39;checksum&#39;: &#39;c3135a2878689645532c2915905b1047&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[1] eaal2099.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaal2099.full.pdf&#39;},
+           {&#39;checksum&#39;: &#39;cb0eb81f03effe1a5b396fd624e198b4&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[2] eaah3690.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaah3690.full.pdf&#39;},
+           {&#39;checksum&#39;: &#39;5ed5d4237a94f0e32986608e6472537b&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[3] eaai7529.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaai7529.full.pdf&#39;},
+           {&#39;checksum&#39;: &#39;ff300061538b89db02db4f0a1296de83&#39;,
+            &#39;path&#39;: &#39;Volume 1 Issue 1/[4] eaag2048.full.pdf&#39;,
+            &#39;url&#39;: &#39;https://robotics.sciencemag.org/content/1/1/eaag2048.full.pdf&#39;}],
+ &#39;issue&#39;: 1,
+ &#39;volume&#39;: 1}
+2020-03-07 13:53:18 [scrapy.core.engine] INFO: Closing spider (finished)
+2020-03-07 13:53:18 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{&#39;downloader/request_bytes&#39;: 16544,
+ &#39;downloader/request_count&#39;: 14,
+ &#39;downloader/request_method_count/GET&#39;: 14,
+ &#39;downloader/response_bytes&#39;: 25699149,
+ &#39;downloader/response_count&#39;: 14,
+ &#39;downloader/response_status_count/200&#39;: 8,
+ &#39;downloader/response_status_count/301&#39;: 6,
+ &#39;elapsed_time_seconds&#39;: 230.165172,
+ &#39;file_count&#39;: 6,
+ &#39;file_status_count/downloaded&#39;: 6,
+ &#39;finish_reason&#39;: &#39;finished&#39;,
+ &#39;finish_time&#39;: datetime.datetime(2020, 3, 7, 5, 53, 18, 984824),
+ &#39;item_scraped_count&#39;: 6,
+ &#39;log_count/DEBUG&#39;: 27,
+ &#39;log_count/INFO&#39;: 13,
+ &#39;request_depth_max&#39;: 1,
+ &#39;response_received_count&#39;: 8,
+ &#39;scheduler/dequeued&#39;: 2,
+ &#39;scheduler/dequeued/memory&#39;: 2,
+ &#39;scheduler/enqueued&#39;: 2,
+ &#39;scheduler/enqueued/memory&#39;: 2,
+ &#39;start_time&#39;: datetime.datetime(2020, 3, 7, 5, 49, 28, 819652)}
+2020-03-07 13:53:18 [scrapy.core.engine] INFO: Spider closed (finished)
+</code></pre></div><p>It&rsquo;s the log information when the framework are running. If your IP address have the access to the Sci Robt papers and web connection are fast enough, you should finish downloading them in about 5mins, which is time cost when I test it with my college IP.</p>
+<h2 id="end">END</h2>
+<p>Congratulations! You have experienced some awesome feature scrapy framework provide you. If you want to learn more, you can find more information at its <a href="https://scrapy.org/">website</a>.</p>
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://lvliangxiong.github.io/tags/python" rel="tag" title="python">#python#</a>
+    
+    <a href="https://lvliangxiong.github.io/tags/scrapy" rel="tag" title="scrapy">#scrapy#</a>
+    
+    <a href="https://lvliangxiong.github.io/tags/programming" rel="tag" title="programming">#programming#</a>
+    
+    <a href="https://lvliangxiong.github.io/tags/web-crawler" rel="tag" title="web crawler">#web crawler#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://lvliangxiong.github.io/about/" rel="next" title="About">
+        <i class="fa fa-chevron-left"></i> About
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://lvliangxiong.github.io/post/c-family/uwp-application-for-searching-ebooks/" rel="prev" title="UWP Application for Searching Ebooks">
+        UWP Application for Searching Ebooks <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     <div id="disqus_thread"></div>
+<script>
+  
+
+  
+
+  (function() {
+    
+    var d = document,
+      s = d.createElement("script");
+
+    s.src = "https://lvliangxiong-github-io.disqus.com/embed.js";
+
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript" rel="nofollow"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      Table of Content
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      Site Information
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+        src="https://lvliangxiong.github.io/img/author.jpg"
+        alt="JoeyLyu" />
+    <p class="site-author-name" itemprop="name">JoeyLyu</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        To Be A Programmer</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://lvliangxiong.github.io/post/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">Blogs</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://lvliangxiong.github.io/categories/">      
+         
+        <span class="site-state-item-count">11</span>
+        
+        <span class="site-state-item-name">Categories</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://lvliangxiong.github.io/tags/">
+         
+        <span class="site-state-item-count">9</span>
+        
+        <span class="site-state-item-name">Tags</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/lvliangxiong/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+</div>
+
+
+      
+
+      <div class="links-of-blogroll motion-element inline">
+  <script
+    type="text/javascript"
+    src="//rf.revolvermaps.com/0/0/0.js?i=5d5gtmd4iyy&amp;d=2&amp;p=1&amp;b=8&amp;w=218&amp;g=2&amp;f=arial&amp;fs=12&amp;r=0&amp;c0=362b05&amp;c1=375363&amp;c2=000000&amp;ic0=0&amp;ic1=0"
+    async="async"
+  ></script>
+</div>
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#install-scrapy">Install <code>Scrapy</code></a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#a-prime-example">A Prime Example</a>
+      <ul>
+        <li><a href="#create-a-new-project">Create a new project</a></li>
+        <li><a href="#generate-your-spider">Generate your spider</a></li>
+        <li><a href="#analyze-spider-logic">Analyze spider logic</a></li>
+        <li><a href="#implementation">Implementation</a></li>
+      </ul>
+    </li>
+    <li><a href="#end">END</a></li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  <span itemprop="copyrightYear"> &copy;
+    2019 - 2020</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">Lyu&#39;s Daily</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo">Hugo v0.73.0</a>
+</div>
+<div class="theme-info">
+  Theme by - <a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://lvliangxiong.github.io/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://lvliangxiong.github.io/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/utils.js"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/motion.js"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/affix.js"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/post-details.js"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/toc.js"></script>
+
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/search.js"></script>
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+</body>
+</html>

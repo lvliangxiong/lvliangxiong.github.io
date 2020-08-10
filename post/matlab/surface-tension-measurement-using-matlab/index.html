@@ -1,0 +1,504 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <meta name="google-site-verification" content="PTDuKfKQvBxBppTZS6sMfvcDWXTHcL8TZPHv5qWSjos" />
+    <title>Surface Tension Measurement Using Matlab - Lyu&#39;s Daily</title>
+    <meta name="keywords" content="Lyu&#39;s Daily, Java, Python">
+    
+    <meta property="og:title" content="Surface Tension Measurement Using Matlab">
+    <meta property="og:site_name" content="Lyu&#39;s Daily">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="Surface Tension Measurement Using Matlab - Lyu&#39;s Daily" />
+    <meta name="description" content="Blog | Software | Java | Python"> 
+    <link rel="shortcut icon" href="https://lvliangxiong.github.io/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="https://lvliangxiong.github.io/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://lvliangxiong.github.io/img/apple-touch-icon.png" />
+    <link href="https://lvliangxiong.github.io/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="https://lvliangxiong.github.io/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="https://lvliangxiong.github.io/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="https://lvliangxiong.github.io/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://lvliangxiong.github.io/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lyu&#39;s Daily</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">a little bit change</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="https://lvliangxiong.github.io/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://lvliangxiong.github.io/categories/java/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />Java
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://lvliangxiong.github.io/categories/python/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />Python
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://lvliangxiong.github.io/post/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archive
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="https://lvliangxiong.github.io/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> Search</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://lvliangxiong.github.io/post/matlab/surface-tension-measurement-using-matlab/" itemprop="url">
+        Surface Tension Measurement Using Matlab
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">Published at:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2019-04-22">
+    2019-04-22
+</time>
+</span> 
+      
+
+  <span class="post-category" >
+  &nbsp; | &nbsp;
+  <span class="post-meta-item-icon">
+    <i class="fa fa-folder-o"></i>
+  </span>
+  <span class="post-meta-item-text">Categories:</span>
+  
+    <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+      <a href="https://lvliangxiong.github.io/categories/matlab" itemprop="url" rel="index">
+        <span itemprop="name">Matlab</span>
+      </a>
+      &nbsp; 
+    </span>
+  
+</span>
+
+
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">Reading:</span>
+<span class="leancloud-visitors-count">1039 words ~5min</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>Surface tension of liquids plays a central role in many small-scale interfacial phenomena. For instance, the curvature force which is why small insects can walk on water, the Marangoni flow caused by surface tension gradient, the wet-ability of liquids&hellip;&hellip;</p>
+<p>Sometimes you have to get the value of surface tension of liquids without the specific facilities. What should you do?</p>
+<p><strong>Here I’ll present you a handy way to get the surface tension of liquids with MATLAB, a series of imaging hardware (a camera and an appropriate lighting source will be better) and a syringe.</strong></p>
+<h2 id="principles">Principles</h2>
+<p><strong>Pendant Drop method</strong> was adopted since it’s really simple.</p>
+<p>The main process of measuring surface tension by this method is to measure the shape of your objective liquids droplets.</p>
+<p>A typical droplet hanging over the nozzle of the syringe is depicted like this:</p>
+<p><img src="https://i.loli.net/2019/04/20/5cbabea3ccd33.jpg" alt=""></p>
+<p>Specifically speaking, the method adopted here is selected planes method in pendant drop method, which means what you used to get the surface tension is just a few planes in the characteristic droplet shape, not the complete shape curve.</p>
+<p>In practice, you have to measure the value of $d_e$, $d_{10}$. After that, you just need to run the script in MATLAB, get the value you need and have fun.</p>
+<p>The physical meaning of $d_e$ is the diameter of the maximum horizontal circle of the droplet, while $d_{10}$ means the diameter of the circle located at the height $d_e$ relative to the bottom of the droplet.</p>
+<p>Surface tension expressed in terms of $d_e$ and $d_{10}$:</p>
+<p>$$\lambda = g\rho{d_e}^2/h$$</p>
+<p>where $g$ is the gravitational acceleration, $\rho$ the density of the liquid, $h$ a non-dimensional number associated with $d_e$ and $d_{10}$, which can be easily obtained by looking up in the reference table.</p>
+<p>Check this equation with the unit, you can get $m/s^2 * kg/m^3 * m^2 = kg/s^2 = N/(m/s^2)/s^2 = N/m$. If you want the final value in $dyn/cm$, namely $mN/m$, you should make simple dimensional conversion.</p>
+<h2 id="practical-operation">Practical operation</h2>
+<p>Firstly, you need to get a syringe loaded with the liquid for testing, for example water. Make sure the bubbles in the syringe are negligible. Fix your syringe wherever you like. And push the piston to squeeze the liquid out of the nozzle, please do this carefully to make the droplet hang on the nozzle statically perfectly. Then the imaging should started.</p>
+<p>Now it‘s the photo time! You should get a pair of nice camera and lighting source, and take a photo of it normally.</p>
+<p>A typical image of the droplet should look like this:</p>
+<p><img src="https://i.loli.net/2019/04/20/5cbabea401494.png" alt=""></p>
+<p>The requirements for imaging listed here:</p>
+<ol>
+<li>The edge should be sharp and clear.</li>
+<li>The nozzle located at the top of the image.</li>
+<li>The amount of the liquid squeezed out of the nozzle, namely the droplet size should ensure $d_{10}/d_e$ is among the range of 0.66 ~ 1. And this ratio should be made more closer to the left limit (0.66) to make the final result more precise. To make this easier, a recommended practice is to largen your nozzle diameter from my experience.</li>
+</ol>
+<p>After all these “painful” work, let’s do something much easier, if you think the work above is difficult for you!</p>
+<ol>
+<li>Measure the diameter of the nozzle of the syringe with a vernier scale.</li>
+<li>Find the density of the testing liquid. For most chemicals, it’s easy to get the density on the website, such as BASF.</li>
+</ol>
+<h2 id="usage-of-matlab">Usage of MATLAB</h2>
+<p>Here we just put the script for processing the images straightforward.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-MATLAB" data-lang="MATLAB">clear
+clc
+close all
+<span style="color:#008000">% define some contant in the experiment</span>
+nozzle_diameter = 1.63; <span style="color:#008000">% unit: mm</span>
+rho = 1060 <span style="color:#008000">% unit: kg/m^3</span>
+g = 9.80665 <span style="color:#008000">% gravitity acceleration unit: m/s^2</span>
+
+imgs = dir(<span style="color:#a31515">&#39;*.png&#39;</span>);
+<span style="color:#00f">for</span> i = 1: numel(imgs)
+    <span style="color:#008000">%% image process to get the Ds, De, S</span>
+    img = imread(imgs(i).name);
+    rect = [350, 10, 650, 800];
+    img_interested = imcrop(img, rect);
+    img_bw = imbinarize(rgb2gray(img_interested),0.4);
+    figure
+    imshowpair(img_interested, img_bw, <span style="color:#a31515">&#39;montage&#39;</span>)
+    img_bw2 = imfill(~img_bw, <span style="color:#a31515">&#39;holes&#39;</span>);
+    figure
+    imshow(img_bw2)
+    a = sum(img_bw2, 2);
+    a(a==0) = [];
+    de = max(a);
+    ds = a(length(a)-de);
+    s = ds/de;
+    ratio = mean(a(1:5))/nozzle_diameter;
+    de_length = de/ratio;
+    <span style="color:#008000">%% compute H by looking up in the database</span>
+    load S_H.mat
+    h = interp1(S,H,s);
+    <span style="color:#008000">%% final surface tension calculation [dyn/cm]</span>
+    st = g*rho*de_length^2/1000*(1/h)
+    sts(i) = st;
+<span style="color:#00f">end</span>
+</code></pre></div><p>Here I don’t want to introduce you how to write a MATLAB script. Just give you the script that works.</p>
+<p>Put the images you get and the script file in the same folder. Launch the MATLAB, whatever the version is, I used MATLAB 2017. Press F5 to run the script. Wait for a minute, one thing missed. A <code>.mat</code> file should be put in the same folder to make sure the script works normally. This file contains the reference table to calculate the non-dimensional number mentioned above.</p>
+<p>So what exactly the script had done when running in MATLAB?</p>
+<p>Firstly, it computes the scale of really length and the image pixels. Then compute the real length of $d_e$ according to the scale and the $d_e$ in pixels. Same with $d_{10}$ ($d_s$ in the script). And then their ratio $s$. Then by looking up in the table, we find $h$. Finally, compute the surface tension $st$ based on the equation fore-mentioned. A unit transformation is done to get $st$ in $dyn/cm$.</p>
+<p><strong>Notes for attention</strong></p>
+<ul>
+<li>The processing of images employs the some simple imaging processing functions in MATLAB. And the parameters in the functions should vary if you your images is different. So when you do not want to understand what the scripts are and how to apply to your images, it ‘s good to make sure your images looks like mine, in the color and size.</li>
+<li>The script can process multiple images at the same time, irrespective of the filenames. Also, one liquid should be tested and photoed multiple times for better and convincing results.</li>
+</ul>
+<p>The results of running the script is shown here:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-MATLAB" data-lang="MATLAB">rho =
+
+        1060
+
+
+g =
+
+    9.8066
+
+
+st =
+
+   24.0542
+
+
+st =
+
+   24.1535
+
+
+st =
+
+   25.8676
+
+
+st =
+
+   24.9764
+
+</code></pre></div><h2 id="reference">Reference</h2>
+<p>If you are interested in the mechanism behind the equations here. You are recommended to read following literature.</p>
+<ul>
+<li>S. Fordham, &ldquo;On the Calculation of Surface Tension from Measurements of
+Pendant Drops.&rdquo; Proc. R. Soc. London. Ser. A. A194. 1 (1948).</li>
+<li>A example of the code and images are presented here as attachment links.</li>
+</ul>
+    </div>
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="https://lvliangxiong.github.io/tags/programming" rel="tag" title="programming">#programming#</a>
+    
+    <a href="https://lvliangxiong.github.io/tags/matlab" rel="tag" title="matlab">#matlab#</a>
+    
+    <a href="https://lvliangxiong.github.io/tags/surface-tension" rel="tag" title="surface tension">#surface tension#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://lvliangxiong.github.io/post/c-family/uwp-application-for-searching-ebooks/" rel="next" title="UWP Application for Searching Ebooks">
+        <i class="fa fa-chevron-left"></i> UWP Application for Searching Ebooks
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+    </div>
+</div>
+      
+     
+     
+     <div id="disqus_thread"></div>
+<script>
+  
+
+  
+
+  (function() {
+    
+    var d = document,
+      s = d.createElement("script");
+
+    s.src = "https://lvliangxiong-github-io.disqus.com/embed.js";
+
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript" rel="nofollow"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+    <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+        src="https://lvliangxiong.github.io/img/author.jpg"
+        alt="JoeyLyu" />
+    <p class="site-author-name" itemprop="name">JoeyLyu</p>
+    <p class="site-description motion-element" itemprop="description"> 
+        To Be A Programmer</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="https://lvliangxiong.github.io/post/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">Blogs</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="https://lvliangxiong.github.io/categories/">      
+         
+        <span class="site-state-item-count">11</span>
+        
+        <span class="site-state-item-name">Categories</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="https://lvliangxiong.github.io/tags/">
+         
+        <span class="site-state-item-count">9</span>
+        
+        <span class="site-state-item-name">Tags</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/lvliangxiong/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+</div>
+
+
+      
+
+      <div class="links-of-blogroll motion-element inline">
+  <script
+    type="text/javascript"
+    src="//rf.revolvermaps.com/0/0/0.js?i=5d5gtmd4iyy&amp;d=2&amp;p=1&amp;b=8&amp;w=218&amp;g=2&amp;f=arial&amp;fs=12&amp;r=0&amp;c0=362b05&amp;c1=375363&amp;c2=000000&amp;ic0=0&amp;ic1=0"
+    async="async"
+  ></script>
+</div>
+
+    </section>
+    
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  <span itemprop="copyrightYear"> &copy;
+    2019 - 2020</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">Lyu&#39;s Daily</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo">Hugo v0.73.0</a>
+</div>
+<div class="theme-info">
+  Theme by - <a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://lvliangxiong.github.io/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="https://lvliangxiong.github.io/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/utils.js"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/motion.js"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/affix.js"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/scrollspy.js"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/post-details.js"></script>
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/toc.js"></script>
+
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="https://lvliangxiong.github.io/js/search.js"></script>
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+</body>
+</html>
