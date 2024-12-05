@@ -1,96 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tags on Lyu&#39;s Daily</title>
+    <title>Tags on Coding 养家</title>
     <link>https://lvliangxiong.github.io/tags/</link>
-    <description>Recent content in Tags on Lyu&#39;s Daily</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 03 Apr 2020 10:36:27 +0800</lastBuildDate>
-    
-	<atom:link href="https://lvliangxiong.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <description>Recent content in Tags on Coding 养家</description>
+    <generator>Hugo -- 0.138.0</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 22 Apr 2019 01:51:35 +0800</lastBuildDate>
+    <atom:link href="https://lvliangxiong.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>programming</title>
-      <link>https://lvliangxiong.github.io/tags/programming/</link>
-      <pubDate>Fri, 03 Apr 2020 10:36:27 +0800</pubDate>
-      
-      <guid>https://lvliangxiong.github.io/tags/programming/</guid>
+      <title>Image Processing</title>
+      <link>https://lvliangxiong.github.io/tags/image-processing/</link>
+      <pubDate>Mon, 22 Apr 2019 01:51:35 +0800</pubDate>
+      <guid>https://lvliangxiong.github.io/tags/image-processing/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>python</title>
-      <link>https://lvliangxiong.github.io/tags/python/</link>
-      <pubDate>Fri, 03 Apr 2020 10:36:27 +0800</pubDate>
-      
-      <guid>https://lvliangxiong.github.io/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>scrapy</title>
-      <link>https://lvliangxiong.github.io/tags/scrapy/</link>
-      <pubDate>Fri, 03 Apr 2020 10:36:27 +0800</pubDate>
-      
-      <guid>https://lvliangxiong.github.io/tags/scrapy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>web crawler</title>
-      <link>https://lvliangxiong.github.io/tags/web-crawler/</link>
-      <pubDate>Fri, 03 Apr 2020 10:36:27 +0800</pubDate>
-      
-      <guid>https://lvliangxiong.github.io/tags/web-crawler/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>C sharp</title>
-      <link>https://lvliangxiong.github.io/tags/c-sharp/</link>
-      <pubDate>Sat, 01 Jun 2019 15:32:29 +0800</pubDate>
-      
-      <guid>https://lvliangxiong.github.io/tags/c-sharp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>uwp</title>
-      <link>https://lvliangxiong.github.io/tags/uwp/</link>
-      <pubDate>Sat, 01 Jun 2019 15:32:29 +0800</pubDate>
-      
-      <guid>https://lvliangxiong.github.io/tags/uwp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>windows 10</title>
-      <link>https://lvliangxiong.github.io/tags/windows-10/</link>
-      <pubDate>Sat, 01 Jun 2019 15:32:29 +0800</pubDate>
-      
-      <guid>https://lvliangxiong.github.io/tags/windows-10/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>matlab</title>
+      <title>Matlab</title>
       <link>https://lvliangxiong.github.io/tags/matlab/</link>
-      <pubDate>Mon, 22 Apr 2019 18:54:10 +0800</pubDate>
-      
+      <pubDate>Mon, 22 Apr 2019 01:51:35 +0800</pubDate>
       <guid>https://lvliangxiong.github.io/tags/matlab/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>surface tension</title>
+      <title>Surface Tension</title>
       <link>https://lvliangxiong.github.io/tags/surface-tension/</link>
-      <pubDate>Mon, 22 Apr 2019 18:54:10 +0800</pubDate>
-      
+      <pubDate>Mon, 22 Apr 2019 01:51:35 +0800</pubDate>
       <guid>https://lvliangxiong.github.io/tags/surface-tension/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>
